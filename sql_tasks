@@ -1,0 +1,10 @@
+--Найдите модели ПК-блокнотов, скорость которых меньше скорости любого из ПК.
+--Вывести: type, model, speed
+SELECT DISTINCT type,
+                product.model,
+                speed
+FROM   product,
+       laptop
+WHERE  product.model = laptop.model
+       AND speed < ALL (SELECT speed
+                        FROM   pc)  
