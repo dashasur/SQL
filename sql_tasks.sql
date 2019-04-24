@@ -30,3 +30,12 @@ FROM   product
        JOIN laptop
          ON product.model = laptop.model
 GROUP  BY maker  
+
+--#20 Найдите производителей, выпускающих по меньшей мере три различных модели ПК. Вывести: Maker, число моделей ПК. 
+SELECT maker,
+       Count(DISTINCT product.model) AS COUNT_model
+FROM   pc,
+       product
+WHERE  type = 'PC'
+GROUP  BY maker
+HAVING Count(DISTINCT product.model) > 2  
