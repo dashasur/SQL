@@ -39,3 +39,10 @@ FROM   pc,
 WHERE  type = 'PC'
 GROUP  BY maker
 HAVING Count(DISTINCT product.model) > 2  
+
+--#21 Найдите максимальную цену ПК, выпускаемых каждым производителем, у которого есть модели в таблице PC.
+Вывести: maker, максимальная цена. 
+SELECT maker, MAX(price)
+FROM PC,Product
+Where PC.model=Product.model
+Group BY maker
